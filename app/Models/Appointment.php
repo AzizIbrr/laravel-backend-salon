@@ -22,7 +22,15 @@ class Appointment extends Model
     public function treatments()
     {
         return $this->belongsToMany(Treatment::class, 'appointment_treatment')
+                    ->using(AppointmentTreatment::class)
                     ->withPivot('therapist_id')
+                    ->withTimestamps();
+    }
+
+    public function therapists()
+    {
+        return $this->belongsToMany(Therapist::class, 'appointment_treatment')
+                    ->withPivot('treatment_id')
                     ->withTimestamps();
     }
 

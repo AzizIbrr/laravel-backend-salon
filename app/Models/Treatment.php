@@ -17,13 +17,19 @@ class Treatment extends Model
     public function appointments()
     {
         return $this->belongsToMany(Appointment::class, 'appointment_treatment')
-                    ->withPivot('therapist_id')
-                    ->withTimestamps();
+            ->using(AppointmentTreatment::class)
+            ->withPivot('therapist_id')
+            ->withTimestamps();
     }
 
     public function therapists()
     {
         return $this->belongsToMany(Therapist::class, 'treatment_therapist')
-                    ->withTimestamps();
+            ->withTimestamps();
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
