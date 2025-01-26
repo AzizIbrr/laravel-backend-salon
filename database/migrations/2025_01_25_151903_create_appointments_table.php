@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
+        $table->id();
+        $table->string('id_appointment')->nullable();
         $table->unsignedBigInteger('location_id')->nullable();
         $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null');
         $table->string('name')->nullable();

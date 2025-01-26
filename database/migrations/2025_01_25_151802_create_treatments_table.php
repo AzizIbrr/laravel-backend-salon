@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null');
             $table->integer('price')->nullable();
             $table->string('image')->nullable();
-            $table->string('category')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });
