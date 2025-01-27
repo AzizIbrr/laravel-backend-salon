@@ -17,21 +17,22 @@ class Appointment extends Model
         'date',
         'start_time',
         'status',
+        'total_price',
     ];
 
     public function treatments()
     {
         return $this->belongsToMany(Treatment::class, 'appointment_treatment')
-                    ->using(AppointmentTreatment::class)
-                    ->withPivot('therapist_id')
-                    ->withTimestamps();
+            ->using(AppointmentTreatment::class)
+            ->withPivot('therapist_id')
+            ->withTimestamps();
     }
 
     public function therapists()
     {
         return $this->belongsToMany(Therapist::class, 'appointment_treatment')
-                    ->withPivot('treatment_id')
-                    ->withTimestamps();
+            ->withPivot('treatment_id')
+            ->withTimestamps();
     }
 
     public function location()

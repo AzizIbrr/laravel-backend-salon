@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class AppointmentTreatment extends Model
+class AppointmentTreatment extends Pivot
 {
     protected $table = 'appointment_treatment';
-    
+
     protected $fillable = ['appointment_id', 'treatment_id', 'therapist_id'];
 
     public function appointment()
